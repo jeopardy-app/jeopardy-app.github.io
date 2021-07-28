@@ -1,7 +1,12 @@
+{-# LANGUAGE
+    OverloadedStrings
+  #-}
+
 module Index where
 
-import Shpadoinkle (Env, entrypoint)
-import Shpadonikle.Html
+import Shpadoinkle.Run (Env, entrypoint)
+import Shpadoinkle.Html
+import Shpadoinkle.Backend.Static (renderStatic)
 import Data.ByteString.Lazy (ByteString)
 import Data.Text.Lazy (fromStrict)
 import Data.Text.Lazy.Encoding (encodeUtf8)
@@ -11,10 +16,10 @@ indexHtml env =
   html_
   [ head_
     [ link' [rel "stylesheet", href "https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css"]
-    , meta_ [charset "UTF-8"]
-    , script_ [src $ entrypoint env]
+    , meta' [charset "UTF-8"]
+    , script' [src $ entrypoint env]
     ]
-  , body_'
+  , body'_
   ]
 
 indexHtmlUtf8 :: Env -> ByteString

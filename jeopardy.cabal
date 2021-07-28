@@ -4,10 +4,15 @@ version:             0.1.0.0
 
 executable jeopardy
   main-is:             Main.hs
+  other-modules:
+     Index
   build-depends:       base ^>=4.12.0.0
    , Shpadoinkle
    , Shpadoinkle-backend-snabbdom
+   , Shpadoinkle-backend-static
    , Shpadoinkle-html
+   , bytestring
+   , jsaddle-warp
    , text
 
   hs-source-dirs:      src

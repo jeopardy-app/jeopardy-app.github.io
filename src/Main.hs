@@ -5,10 +5,10 @@ module Main where
 
 import Index (indexHtmlUtf8)
 
-import           Shpadoinkle                      (Html, JSM, Env (Dev, Prod))
+import           Shpadoinkle                      (Html, JSM)
 import           Shpadoinkle.Backend.Snabbdom     (runSnabbdom, stage)
 import           Shpadoinkle.Html
-import           Shpadoinkle.Run                  (liveWithIndex, simple)
+import           Shpadoinkle.Run                  (Env (..), liveWithIndex, simple)
 import           Language.Javascript.JSaddle.Warp (runWithIndex)
 
 

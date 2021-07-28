@@ -21,7 +21,7 @@ let
       shpadoinkle = if shpadoinkle-path != null then shpadoinkle-path else builtins.fetchGit {
         url    = https://gitlab.com/platonic/shpadoinkle.git;
         ref    = "jsaddle-xhr-sync-bug-20210727";
-        rev    = "b9e72315a81fc98fd59a9833d1b969495b14221a";
+        rev    = "afb87b81df3927cbe7c40a89372c7068fa1cfeb1";
       };
 
 
