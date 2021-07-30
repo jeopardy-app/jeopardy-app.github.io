@@ -98,7 +98,21 @@ let
     in with pkgs; with lib;
 
       { build =
-          (if isJS && optimize then doCannibalize else x: x) (chill jeopardy);
+          let build' = (if isJS && optimize then doCannibalize else x: x) (chill jeopardy);
+          in  pkgs.haskell.lib.overrideCabal build' (old: {
+                postInstall = old.postInstall + ''
+                
+                echo "POST INSTALL"
+                for dir in $out/bin/*/
+                do
+                    rm $dir/index.html
+                    echo "compilerjs: ${compilerjs}"
+                    echo "compiler: ${compiler}"
+                    ghci --version
+
+                done
+                '';
+              });
 
         shell =
           pkgs.haskell.packages.${compilerjs}.shellFor {
